@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { MODULES, getModule } from "@/data/modules";
+import { MODULES, getModule, type ModuleInfo } from "@/data/modules";
 
 export const Route = createFileRoute("/modules/$slug")({
   loader: ({ params }) => {
@@ -37,9 +37,10 @@ export const Route = createFileRoute("/modules/$slug")({
 
 function ModulePage() {
   const { module: m } = Route.useLoaderData();
-  const Icon = m.icon;
+  const mod = m as ModuleInfo;
+  const Icon = mod.icon;
 
-  const idx = MODULES.findIndex((x) => x.slug === m.slug);
+  const idx = MODULES.findIndex((x) => x.slug === mod.slug);
   const next = MODULES[(idx + 1) % MODULES.length];
 
   return (
@@ -60,14 +61,14 @@ function ModulePage() {
             </span>
             <div>
               <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                {m.name}
+                {mod.name}
               </h1>
-              <p className="mt-2 text-lg text-muted-foreground">{m.tagline}</p>
+              <p className="mt-2 text-lg text-muted-foreground">{mod.tagline}</p>
             </div>
           </div>
 
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
-            {m.description}
+            {mod.description}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -91,7 +92,7 @@ function ModulePage() {
               Ce que fait le module
             </h2>
             <ul className="mt-6 space-y-3">
-              {m.features.map((f) => (
+              {mod.features.map((f) => (
                 <li key={f} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                   <span className="text-foreground">{f}</span>
@@ -108,7 +109,7 @@ function ModulePage() {
               Comment ça marche
             </h2>
             <ol className="mt-6 space-y-4">
-              {m.workflow.map((step, i) => (
+              {mod.workflow.map((step, i) => (
                 <li
                   key={step}
                   className="flex gap-4 rounded-lg border border-border bg-card p-4"
