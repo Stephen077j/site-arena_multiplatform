@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { User, Mail, Lock, Phone, ArrowRight, Sparkles, ShieldCheck, Zap } from 'lucide-react';
+import { User, Mail, Lock, Phone, ArrowRight, Sparkles, ShieldCheck, Zap, Star, Users, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useClientAuth } from '../lib/clientAuth';
 
@@ -440,6 +440,36 @@ const ClientLogin = () => {
               <h2 className="brand-title" style={{ fontSize: 36, fontWeight: 700, color: 'white', lineHeight: 1.2, maxWidth: 320 }}>
                 Tout ce dont vous avez besoin, au même endroit.
               </h2>
+              <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, lineHeight: 1.55, marginTop: 14, maxWidth: 360 }}>
+                10 services premium réunis : boutique, restaurant, hôtel, salle de sport, piscine, salon, terrain, événements, cybercafé et spectacles — un seul compte, zéro friction.
+              </p>
+
+              {/* Stats */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginTop: 24, maxWidth: 380 }}>
+                {[
+                  { v: '10K+', l: 'clients actifs' },
+                  { v: '4.9★', l: 'note moyenne' },
+                  { v: '24/7', l: 'disponible' },
+                ].map((s) => (
+                  <div
+                    key={s.l}
+                    style={{
+                      borderRadius: 12,
+                      background: 'rgba(255,255,255,0.05)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      padding: '10px 8px',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <div className="brand-title" style={{ color: 'white', fontSize: 18, fontWeight: 700, lineHeight: 1 }}>
+                      {s.v}
+                    </div>
+                    <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>
+                      {s.l}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Features */}
@@ -689,6 +719,19 @@ const ClientLogin = () => {
             {/* Back to home */}
             <div className="back-home">
               <button onClick={() => navigate('/')}>← Retour à l'accueil</button>
+            </div>
+
+            {/* Trust badges */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: 18, fontSize: 11, color: '#9ca3af' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <CheckCircle2 style={{ width: 13, height: 13, color: '#10b981' }} /> Données chiffrées
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <Users style={{ width: 13, height: 13, color: '#6366f1' }} /> 10 000+ utilisateurs
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                <Star style={{ width: 13, height: 13, color: '#f59e0b' }} /> 4.9/5 sur 1 200 avis
+              </span>
             </div>
           </div>
         </div>
