@@ -14,8 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      audit_logs: {
+        Row: {
+          action: string
+          actor_email: string | null
+          actor_id: string | null
+          created_at: string
+          details: Json | null
+          entity: string | null
+          id: string
+        }
+        Insert: {
+          action: string
+          actor_email?: string | null
+          actor_id?: string | null
+          created_at?: string
+          details?: Json | null
+          entity?: string | null
+          id?: string
+        }
+        Update: {
+          action?: string
+          actor_email?: string | null
+          actor_id?: string | null
+          created_at?: string
+          details?: Json | null
+          entity?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
       platform_settings: {
         Row: {
+          active_modules: string[]
           auto_update_enabled: boolean
           created_at: string
           desktop_enabled: boolean
@@ -39,6 +70,7 @@ export type Database = {
           web_enabled: boolean
         }
         Insert: {
+          active_modules?: string[]
           auto_update_enabled?: boolean
           created_at?: string
           desktop_enabled?: boolean
@@ -62,6 +94,7 @@ export type Database = {
           web_enabled?: boolean
         }
         Update: {
+          active_modules?: string[]
           auto_update_enabled?: boolean
           created_at?: string
           desktop_enabled?: boolean
@@ -83,6 +116,33 @@ export type Database = {
           updated_at?: string
           web_domain?: string | null
           web_enabled?: boolean
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          active: boolean
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
         }
         Relationships: []
       }
