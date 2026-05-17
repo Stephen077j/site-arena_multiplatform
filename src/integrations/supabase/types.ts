@@ -14,180 +14,16 @@ export type Database = {
   }
   public: {
     Tables: {
-      audit_logs: {
-        Row: {
-          action: string
-          actor_email: string | null
-          actor_id: string | null
-          created_at: string
-          details: Json
-          entity: string | null
-          entity_id: string | null
-          id: string
-        }
-        Insert: {
-          action: string
-          actor_email?: string | null
-          actor_id?: string | null
-          created_at?: string
-          details?: Json
-          entity?: string | null
-          entity_id?: string | null
-          id?: string
-        }
-        Update: {
-          action?: string
-          actor_email?: string | null
-          actor_id?: string | null
-          created_at?: string
-          details?: Json
-          entity?: string | null
-          entity_id?: string | null
-          id?: string
-        }
-        Relationships: []
-      }
-      platform_settings: {
-        Row: {
-          active_modules: string[]
-          auto_update_enabled: boolean
-          created_at: string
-          desktop_enabled: boolean
-          desktop_min_version: string | null
-          email_notifications_enabled: boolean
-          enable_two_factor_auth: boolean
-          force_desktop_update: boolean
-          force_mobile_update: boolean
-          id: string
-          maintenance_mode: boolean
-          max_sessions_per_user: number
-          mobile_enabled: boolean
-          mobile_min_version: string | null
-          offline_mode_enabled: boolean
-          push_notifications_enabled: boolean
-          realtime_enabled: boolean
-          session_timeout_minutes: number
-          sms_notifications_enabled: boolean
-          updated_at: string
-          web_domain: string | null
-          web_enabled: boolean
-        }
-        Insert: {
-          active_modules?: string[]
-          auto_update_enabled?: boolean
-          created_at?: string
-          desktop_enabled?: boolean
-          desktop_min_version?: string | null
-          email_notifications_enabled?: boolean
-          enable_two_factor_auth?: boolean
-          force_desktop_update?: boolean
-          force_mobile_update?: boolean
-          id?: string
-          maintenance_mode?: boolean
-          max_sessions_per_user?: number
-          mobile_enabled?: boolean
-          mobile_min_version?: string | null
-          offline_mode_enabled?: boolean
-          push_notifications_enabled?: boolean
-          realtime_enabled?: boolean
-          session_timeout_minutes?: number
-          sms_notifications_enabled?: boolean
-          updated_at?: string
-          web_domain?: string | null
-          web_enabled?: boolean
-        }
-        Update: {
-          active_modules?: string[]
-          auto_update_enabled?: boolean
-          created_at?: string
-          desktop_enabled?: boolean
-          desktop_min_version?: string | null
-          email_notifications_enabled?: boolean
-          enable_two_factor_auth?: boolean
-          force_desktop_update?: boolean
-          force_mobile_update?: boolean
-          id?: string
-          maintenance_mode?: boolean
-          max_sessions_per_user?: number
-          mobile_enabled?: boolean
-          mobile_min_version?: string | null
-          offline_mode_enabled?: boolean
-          push_notifications_enabled?: boolean
-          realtime_enabled?: boolean
-          session_timeout_minutes?: number
-          sms_notifications_enabled?: boolean
-          updated_at?: string
-          web_domain?: string | null
-          web_enabled?: boolean
-        }
-        Relationships: []
-      }
-      profiles: {
-        Row: {
-          active: boolean
-          created_at: string
-          email: string | null
-          full_name: string | null
-          id: string
-          updated_at: string
-        }
-        Insert: {
-          active?: boolean
-          created_at?: string
-          email?: string | null
-          full_name?: string | null
-          id: string
-          updated_at?: string
-        }
-        Update: {
-          active?: boolean
-          created_at?: string
-          email?: string | null
-          full_name?: string | null
-          id?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      user_roles: {
-        Row: {
-          assigned_modules: string[]
-          created_at: string
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          assigned_modules?: string[]
-          created_at?: string
-          id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          assigned_modules?: string[]
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
     Enums: {
-      app_role: "super_admin" | "admin_module" | "caissier" | "client"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -314,8 +150,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["super_admin", "admin_module", "caissier", "client"],
-    },
+    Enums: {},
   },
 } as const
