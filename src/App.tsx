@@ -28,7 +28,7 @@ import SuperAdminLayout from '@/superadmin/SuperAdminLayout';
 import SuperAdminLogin from '@/superadmin/pages/SuperAdminLogin';
 import SuperAdminDashboard from '@/superadmin/pages/SuperAdminDashboard';
 import SuperAdminUsers from '@/superadmin/pages/SuperAdminUsers';
-import SuperAdminPlatformSettings from '@/superadmin/pages/SuperAdminPlatformSettings';
+import SuperAdminPlatformSettings from '@/pages/super-admin/PlatformSettings';
 import SuperAdminAuditLogs from '@/superadmin/pages/SuperAdminAuditLogs';
 import {
   SuperAdminRoles, SuperAdminModules, SuperAdminAnalytics,

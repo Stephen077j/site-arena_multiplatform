@@ -20,9 +20,8 @@ export type Database = {
           actor_email: string | null
           actor_id: string | null
           created_at: string
-          details: Json
+          details: Json | null
           entity: string | null
-          entity_id: string | null
           id: string
         }
         Insert: {
@@ -30,9 +29,8 @@ export type Database = {
           actor_email?: string | null
           actor_id?: string | null
           created_at?: string
-          details?: Json
+          details?: Json | null
           entity?: string | null
-          entity_id?: string | null
           id?: string
         }
         Update: {
@@ -40,9 +38,8 @@ export type Database = {
           actor_email?: string | null
           actor_id?: string | null
           created_at?: string
-          details?: Json
+          details?: Json | null
           entity?: string | null
-          entity_id?: string | null
           id?: string
         }
         Relationships: []
@@ -151,21 +148,18 @@ export type Database = {
       }
       user_roles: {
         Row: {
-          assigned_modules: string[]
           created_at: string
           id: string
           role: Database["public"]["Enums"]["app_role"]
           user_id: string
         }
         Insert: {
-          assigned_modules?: string[]
           created_at?: string
           id?: string
           role: Database["public"]["Enums"]["app_role"]
           user_id: string
         }
         Update: {
-          assigned_modules?: string[]
           created_at?: string
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
@@ -187,7 +181,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "super_admin" | "admin_module" | "caissier" | "client"
+      app_role: "super_admin" | "admin_module" | "caissier"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -315,7 +309,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["super_admin", "admin_module", "caissier", "client"],
+      app_role: ["super_admin", "admin_module", "caissier"],
     },
   },
 } as const
