@@ -14,16 +14,114 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      platform_settings: {
+        Row: {
+          auto_update_enabled: boolean
+          created_at: string
+          desktop_enabled: boolean
+          desktop_min_version: string | null
+          email_notifications_enabled: boolean
+          enable_two_factor_auth: boolean
+          force_desktop_update: boolean
+          force_mobile_update: boolean
+          id: string
+          maintenance_mode: boolean
+          max_sessions_per_user: number
+          mobile_enabled: boolean
+          mobile_min_version: string | null
+          offline_mode_enabled: boolean
+          push_notifications_enabled: boolean
+          realtime_enabled: boolean
+          session_timeout_minutes: number
+          sms_notifications_enabled: boolean
+          updated_at: string
+          web_domain: string | null
+          web_enabled: boolean
+        }
+        Insert: {
+          auto_update_enabled?: boolean
+          created_at?: string
+          desktop_enabled?: boolean
+          desktop_min_version?: string | null
+          email_notifications_enabled?: boolean
+          enable_two_factor_auth?: boolean
+          force_desktop_update?: boolean
+          force_mobile_update?: boolean
+          id?: string
+          maintenance_mode?: boolean
+          max_sessions_per_user?: number
+          mobile_enabled?: boolean
+          mobile_min_version?: string | null
+          offline_mode_enabled?: boolean
+          push_notifications_enabled?: boolean
+          realtime_enabled?: boolean
+          session_timeout_minutes?: number
+          sms_notifications_enabled?: boolean
+          updated_at?: string
+          web_domain?: string | null
+          web_enabled?: boolean
+        }
+        Update: {
+          auto_update_enabled?: boolean
+          created_at?: string
+          desktop_enabled?: boolean
+          desktop_min_version?: string | null
+          email_notifications_enabled?: boolean
+          enable_two_factor_auth?: boolean
+          force_desktop_update?: boolean
+          force_mobile_update?: boolean
+          id?: string
+          maintenance_mode?: boolean
+          max_sessions_per_user?: number
+          mobile_enabled?: boolean
+          mobile_min_version?: string | null
+          offline_mode_enabled?: boolean
+          push_notifications_enabled?: boolean
+          realtime_enabled?: boolean
+          session_timeout_minutes?: number
+          sms_notifications_enabled?: boolean
+          updated_at?: string
+          web_domain?: string | null
+          web_enabled?: boolean
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "super_admin" | "admin_module" | "caissier"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +248,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["super_admin", "admin_module", "caissier"],
+    },
   },
 } as const
