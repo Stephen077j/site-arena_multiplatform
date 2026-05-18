@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Search, ShoppingBag, Heart, User, Menu, X, ClipboardList, Bell, Check, Trash2, LogOut, UserCircle } from 'lucide-react';
+import { Search, ShoppingBag, Heart, User, Menu, X, ClipboardList, Bell, Check, Trash2, LogOut, UserCircle, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCartCount, useNotifs, useUnreadNotifs, notifStore } from '@/client/lib/clientStore';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useClientAuth } from '../lib/clientAuth';
+import { useSuperAdminAuth } from '@/superadmin/lib/superAdminAuth';
 
 const NAV = [
   { label: 'Boutique', to: '/boutique' },
@@ -29,6 +30,7 @@ const ClientHeader = () => {
   const notifs = useNotifs();
   const unread = useUnreadNotifs();
   const { user, loading, signOut } = useClientAuth();
+  const { isSuperAdmin } = useSuperAdminAuth();
 
   const getInitials = (name: string) => {
     return name
@@ -156,6 +158,17 @@ const ClientHeader = () => {
                       Mon profil
                     </Link>
                   </DropdownMenuItem>
+                  {isSuperAdmin && (
+                    <>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link to="/super-admin/dashboard" className="cursor-pointer text-amber-600 dark:text-amber-500 font-medium">
+                          <Crown className="w-4 h-4 mr-2" />
+                          Portail Admin
+                        </Link>
+                      </DropdownMenuItem>
+                    </>
+                  )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={signOut} className="cursor-pointer text-destructive">
                     <LogOut className="w-4 h-4 mr-2" />

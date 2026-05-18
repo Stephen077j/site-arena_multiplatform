@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useSuperAdminAuth } from '../lib/superAdminAuth';
 import { Button } from '@/components/ui/button';
@@ -105,6 +105,13 @@ export default function SuperAdminLogin() {
               {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Se connecter'}
             </Button>
           </form>
+
+          <div className="mt-6 text-center text-sm text-slate-400">
+            Pas encore de compte?{' '}
+            <Link to="/super-admin/register" className="text-amber-500 hover:text-amber-400 font-medium">
+              S'inscrire
+            </Link>
+          </div>
 
           <p className="text-xs text-slate-500 text-center mt-6">
             Accès réservé au propriétaire de l'entreprise.

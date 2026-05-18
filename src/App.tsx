@@ -26,6 +26,7 @@ import ClientProfile from '@/client/pages/ClientProfile';
 import { SuperAdminAuthProvider } from '@/superadmin/lib/superAdminAuth';
 import SuperAdminLayout from '@/superadmin/SuperAdminLayout';
 import SuperAdminLogin from '@/superadmin/pages/SuperAdminLogin';
+import SuperAdminRegister from '@/superadmin/pages/SuperAdminRegister';
 import SuperAdminDashboard from '@/superadmin/pages/SuperAdminDashboard';
 import SuperAdminUsers from '@/superadmin/pages/SuperAdminUsers';
 import SuperAdminPlatformSettings from '@/pages/super-admin/PlatformSettings';
@@ -68,6 +69,7 @@ const App = () => (
 
             {/* Super Admin Portal */}
             <Route path="/super-admin/login" element={<SuperAdminLogin />} />
+            <Route path="/super-admin/register" element={<SuperAdminRegister />} />
             <Route path="/super-admin" element={<SuperAdminLayout />}>
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<SuperAdminDashboard />} />
